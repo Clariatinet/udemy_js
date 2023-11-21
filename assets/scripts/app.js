@@ -31,6 +31,22 @@ function writeToLog(
 
 function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
+  if (
+    (calculationType !== 'ADD' &&
+      calculationType !== 'SUBTRACT' &&
+      calculationType !== 'MULTIPLY' &&
+      calculationType !== 'DIVIDE') ||
+    !enteredNumber
+  ) {
+    return;
+  }
+
+  // if (
+  //   calculationType === 'ADD' ||
+  //   calculationType === 'SUBTRACT' ||
+  //   calculationType === 'MULTIPLY' ||
+  //   calculationType === 'DIVDE'
+  // ) {
   const initialResult = currentResult;
   let mathOperator;
   if (calculationType === 'ADD') {
@@ -46,6 +62,8 @@ function calculateResult(calculationType) {
     currentResult /= enteredNumber;
     mathOperator = '/';
   }
+  // }
+
   createAndWirteOutput(mathOperator, initialResult, enteredNumber);
   writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
@@ -69,5 +87,4 @@ function divide() {
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener('click', subtract);
 multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click', divide);
 divideBtn.addEventListener('click', divide);
